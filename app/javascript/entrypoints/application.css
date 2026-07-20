@@ -59,6 +59,18 @@
     @apply cursor-pointer;
   }
 
+  label {
+    @apply block text-sm font-bold mb-1;
+  }
+
+  input:not([type="checkbox"]) {
+    @apply block w-full rounded border border-border px-2 py-1;
+  }
+
+  button[type="submit"] {
+    @apply rounded bg-primary px-3 py-1.5 text-primary-foreground hover:bg-primary-darker;
+  }
+
   a.link {
     @apply text-primary hover:text-primary-darker active:text-primary-darkest font-bold;
   }

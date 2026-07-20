@@ -1,15 +1,22 @@
 <script setup lang="ts">
+import { Link } from "@inertiajs/vue3"
 import { useTranslation } from "i18next-vue"
 import type { PeopleShow } from "@/types/serializers"
 import { formatDate, formatDateTime } from "@/lib/dates"
+import peopleRoutes from "@/routes/PeopleController"
 
-defineProps<PeopleShow>()
+const props = defineProps<PeopleShow>()
 const { t } = useTranslation()
 </script>
 
 <template>
   <div class="space-y-6">
-    <h1>{{ person.name }}</h1>
+    <div class="flex items-center justify-between">
+      <h1>{{ person.name }}</h1>
+      <Link class="link" :href="peopleRoutes.edit(props.person.id).url">{{
+        t("people.actions.edit")
+      }}</Link>
+    </div>
 
     <dl class="grid grid-cols-[max-content_1fr] gap-x-8 gap-y-2 text-sm">
       <dt class="text-gray-500">
@@ -17,16 +24,23 @@ const { t } = useTranslation()
       </dt>
       <dd>{{ person.favorite ? t("common.yes") : t("common.no") }}</dd>
 
+      <template v-if="person.birthday || person.birthdayYear">
+        <dt class="text-gray-500">
+          {{ t("activerecord.attributes.person.birthday") }}
+        </dt>
+        <dd>
+          <template v-if="person.birthday">{{
+            formatDate(person.birthday)
+          }}</template>
+          <template v-else>{{ person.birthdayYear }}</template>
+        </dd>
+      </template>
+
       <template v-if="person.age != null">
         <dt class="text-gray-500">
           {{ t("activerecord.attributes.person.age") }}
         </dt>
-        <dd>
-          {{ person.age }}
-          <span v-if="person.birthday" class="text-gray-500">
-            ({{ formatDate(person.birthday) }})
-          </span>
-        </dd>
+        <dd>{{ person.age }}</dd>
       </template>
     </dl>
 

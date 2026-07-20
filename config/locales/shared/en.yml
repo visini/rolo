@@ -4,4 +4,7 @@ en:
     attributes:
       person:
         age: Age
+        birthday: Birthday
         favorite: Favorite
+        first_name: First name
+        last_name: Last name

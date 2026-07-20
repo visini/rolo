@@ -10,7 +10,12 @@ const { t } = useTranslation()
 
 <template>
   <div class="space-y-6">
-    <h1>{{ t("people.index.title") }}</h1>
+    <div class="flex items-center justify-between">
+      <h1>{{ t("people.index.title") }}</h1>
+      <Link class="link" :href="peopleRoutes.new().url">{{
+        t("people.actions.new")
+      }}</Link>
+    </div>
 
     <ul class="space-y-1">
       <li v-for="person in people" :key="person.id">

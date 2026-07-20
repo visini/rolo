@@ -1,6 +1,9 @@
 ---
 en:
   common:
+    actions:
+      cancel: Cancel
+      save: Save
     'no': 'No'
     none: None
     'yes': 'Yes'
@@ -15,6 +18,9 @@ en:
     home:
       upcoming_birthdays: Upcoming birthdays
   people:
+    actions:
+      edit: Edit person
+      new: New person
     index:
       title: People
     show:

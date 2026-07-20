@@ -27,7 +27,7 @@ class Person < ApplicationRecord
   end
 
   def age
-    return unless birthday_year
+    return unless birthday_year && birthday
 
     age = Date.current.year - birthday.year
     age -= 1 if Date.current < birthday.change(year: Date.current.year)

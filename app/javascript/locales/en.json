@@ -1,5 +1,9 @@
 {
   "common": {
+    "actions": {
+      "cancel": "Cancel",
+      "save": "Save"
+    },
     "no": "No",
     "none": "None",
     "yes": "Yes"
@@ -20,6 +24,10 @@
     }
   },
   "people": {
+    "actions": {
+      "edit": "Edit person",
+      "new": "New person"
+    },
     "index": {
       "title": "People"
     },
@@ -31,7 +39,10 @@
     "attributes": {
       "person": {
         "age": "Age",
-        "favorite": "Favorite"
+        "birthday": "Birthday",
+        "favorite": "Favorite",
+        "first_name": "First name",
+        "last_name": "Last name"
       }
     }
   }
