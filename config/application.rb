@@ -15,6 +15,10 @@ module Rolo
     config.i18n.default_locale = :en
     config.time_zone = "Europe/Zurich"
 
+    # `live` holds real data — block db:seed:replant, db:drop, db:schema:load, etc.
+    # against it the same way Rails already protects `production`.
+    config.active_record.protected_environments = %w[production live]
+
     # Please, add to the `ignore` list any other `lib` subdirectories that do
     # not contain `.rb` files, or that should not be reloaded or eager loaded.
     # Common ones are `templates`, `generators`, or `middleware`, for example.

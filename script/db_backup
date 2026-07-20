@@ -2,11 +2,12 @@
 set -euo pipefail
 cd "$(dirname "$0")/.."
 
-RAILS_ENV="development"
+RAILS_ENV="live"
+SUFFIX="${1:-}"
 
 DB_NAME="$(bin/rails runner -e "$RAILS_ENV" 'print ActiveRecord::Base.connection_db_config.database')"
 STAMP="$(date +%Y%m%d_%H%M%S)"
-FILENAME="${RAILS_ENV}_${DB_NAME}_${STAMP}.dump"
+FILENAME="${DB_NAME}_${STAMP}${SUFFIX:+_$SUFFIX}.dump"
 FILE="backups/${FILENAME}"
 
 mkdir -p backups

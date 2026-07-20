@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+set -euo pipefail
+cd "$(dirname "$0")/.."
+
+export RAILS_ENV=live
+
+echo "Backing up live_rolo before starting the session..."
+script/db_backup pre
+
+cleanup() {
+  echo "Backing up live_rolo after session shutdown..."
+  script/db_backup post
+}
+trap cleanup EXIT
+
+bin/rails server

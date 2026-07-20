@@ -42,11 +42,10 @@ node_modules
 /public/vite
 /public/vite-dev
 /public/vite-test
+/public/vite-live
 
 # Test coverage reports
 /app/javascript/coverage
 /coverage
 
-# MITIE NER model for top_secret (large binary, deployed via some other technique in production, see readme of top_secret for details)
-/ner_model.dat
-/MITIE-models*.tar.bz2
+.DS_Store

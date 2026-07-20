@@ -11,6 +11,9 @@ default: &default
 development:
   <<: *default
 
+live:
+  <<: *default
+
 test:
   <<: *default
 

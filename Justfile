@@ -29,13 +29,16 @@ schema:
 fixtures:
   RAILS_ENV=test bin/rails frontend:fixtures:export
 
-db-backup:
+live:
+  script/live_server
+
+live-backup:
   script/db_backup
 
-db-restore FILE:
+live-restore FILE:
   script/db_restore {{FILE}}
 
-db-backups:
+live-backups:
   ls -lh backups/*.dump
 
 i18n:

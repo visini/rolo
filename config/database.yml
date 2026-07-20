@@ -18,6 +18,15 @@ test:
   <<: *default
   database: test_rolo
 
+live:
+  primary:
+    <<: *default
+    database: live_rolo
+  cache:
+    <<: *default
+    database: live_rolo_cache
+    migrations_paths: db/cache_migrate
+
 production:
   primary: &default_production
     <<: *default
