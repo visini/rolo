@@ -28,6 +28,7 @@ schema:
 
 fixtures:
   RAILS_ENV=test bin/rails frontend:fixtures:export
+  vp check --fix
 
 live:
   script/live_server
