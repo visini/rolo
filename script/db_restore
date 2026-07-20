@@ -26,7 +26,7 @@ psql -d postgres -c "
   WHERE datname = '${DB_NAME}' AND pid <> pg_backend_pid();
 " >/dev/null
 
-bin/rails db:drop db:create RAILS_ENV="$RAILS_ENV"
+DISABLE_DATABASE_ENVIRONMENT_CHECK=1 bin/rails db:drop db:create RAILS_ENV="$RAILS_ENV"
 
 pg_restore \
   --clean \
