@@ -1,0 +1,81 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --border: oklch(0.93 0 0);
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --border: oklch(0.27 0 0);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-border: var(--border);
+}
+
+@theme {
+  --font-sans:
+    ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol", "Noto Color Emoji";
+  --font-mono:
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+    "Courier New", monospace;
+
+  --color-primary: oklch(0.57 0.2096 261.37);
+  --color-primary-foreground: oklch(1 0 0);
+  --color-primary-darker: oklch(0.47 0.2096 261.37);
+  --color-primary-darkest: oklch(0.37 0.2096 261.37);
+
+  --color-gray-50: var(--color-neutral-50);
+  --color-gray-100: var(--color-neutral-100);
+  --color-gray-200: var(--color-neutral-200);
+  --color-gray-300: var(--color-neutral-300);
+  --color-gray-400: var(--color-neutral-400);
+  --color-gray-500: var(--color-neutral-500);
+  --color-gray-600: var(--color-neutral-600);
+  --color-gray-700: var(--color-neutral-700);
+  --color-gray-800: var(--color-neutral-800);
+  --color-gray-900: var(--color-neutral-900);
+  --color-gray-950: var(--color-neutral-950);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+
+  button {
+    @apply cursor-pointer;
+  }
+
+  a.link {
+    @apply text-primary hover:text-primary-darker active:text-primary-darkest font-bold;
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply font-bold;
+  }
+
+  h1 {
+    @apply text-2xl;
+  }
+  h2 {
+    @apply text-xl;
+  }
+  h3 {
+    @apply text-lg;
+  }
+}

@@ -1,0 +1,8 @@
+---
+en:
+  activerecord:
+    errors:
+      messages:
+        blank: can't be blank
+        inclusion: is not included in the list
+        invalid: is invalid

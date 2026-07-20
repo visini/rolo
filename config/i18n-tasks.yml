@@ -1,0 +1,33 @@
+base_locale: en
+
+data:
+  read:
+    - config/locales/shared/%{locale}.yml
+    - config/locales/backend/%{locale}.yml
+  # Attribute/model labels default into the shared file (also read by the
+  # frontend build) so backend and frontend labels stay defined in one place.
+  write:
+    - [
+        "{attributes,activerecord.attributes,activerecord.models}.*",
+        "config/locales/shared/%{locale}.yml",
+      ]
+    - config/locales/backend/%{locale}.yml
+  yaml:
+    write:
+      line_width: -1
+
+ignore_unused:
+  - activerecord.models.*
+  - activerecord.errors.*
+  - activerecord.attributes.*
+  # Rails' `human_attribute_name` fallback for attribute names shared across
+  # models (e.g. created_at) — used implicitly, not via a literal `t()` call.
+  - attributes.*
+
+search:
+  paths:
+    - app/
+  exclude:
+    - app/assets/images
+    - app/assets/fonts
+    - app/javascript/**

@@ -1,0 +1,22 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+# Prints missed line/branch/method numbers for a file, on top of
+# `simplecov coverage`'s summary. Reads `simplecov coverage --json`'s own
+# output — no coverage computation happens here, just formatting.
+
+require "json"
+
+json = `bundle exec simplecov coverage --json #{ARGV.fetch(0)}`
+abort json if $?.exitstatus != 0
+
+_file, data = JSON.parse(json).first
+
+missed_lines = data.fetch("lines").each_with_index.filter_map { |hits, i| (i + 1) if hits == 0 }
+missed_branches = data.fetch("branches").filter_map { |b| "line #{b.fetch("report_line")} (#{b.fetch("type")})" if b.fetch("coverage").zero? }
+humanize_method_name = ->(name) { name.gsub(/#<Class:(\w+)[^>]*>/, '\1.singleton') }
+missed_methods = data.fetch("methods", []).filter_map { |m| "#{humanize_method_name.call(m.fetch("name"))} (line #{m.fetch("start_line")})" if m.fetch("coverage").zero? }
+
+puts "  Missed lines: #{missed_lines.join(", ")}" unless missed_lines.empty?
+puts "  Missed branches: #{missed_branches.join(", ")}" unless missed_branches.empty?
+puts "  Missed methods: #{missed_methods.join(", ")}" unless missed_methods.empty?

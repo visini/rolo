@@ -1,0 +1,32 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+# High-level coverage overview from coverage/coverage.json: files with missed
+# lines, grouped by directory, worst offenders first. Fully covered files are
+# omitted. Run `just coverage` first to refresh the data.
+
+require "json"
+
+report = JSON.parse(File.read("coverage/coverage.json"))
+
+total = report.fetch("total").fetch("lines")
+puts format("Total: %.1f%% (%d/%d lines)", total.fetch("percent"), total.fetch("covered"), total.fetch("total"))
+
+groups = report.fetch("coverage").group_by { |path, _| File.dirname(path) }
+
+groups.sort_by { |_, files| -files.sum { |_, data| data.fetch("missed_lines") } }.each do |dir, files|
+  missed = files.sum { |_, data| data.fetch("missed_lines") }
+  next if missed.zero?
+
+  covered = files.sum { |_, data| data.fetch("covered_lines") }
+  puts
+  puts format("%s  %.1f%% (%d missed)", dir, 100.0 * covered / (covered + missed), missed)
+
+  files.sort_by { |_, data| data.fetch("lines_covered_percent") }.each do |path, data|
+    next if data.fetch("missed_lines").zero?
+
+    puts format("  %-52s %5.1f%%  %d/%d missed",
+      File.basename(path), data.fetch("lines_covered_percent"),
+      data.fetch("missed_lines"), data.fetch("total_lines"))
+  end
+end

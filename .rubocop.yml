@@ -1,0 +1,15 @@
+require:
+  - standard
+  - standard-rails
+
+inherit_gem:
+  standard: config/base.yml
+  standard-rails: config/base.yml
+
+# Custom rules for this project
+
+Style/WordArray:
+  EnforcedStyle: brackets
+
+Style/SymbolArray:
+  EnforcedStyle: brackets

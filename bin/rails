@@ -1,0 +1,13 @@
+#!/usr/bin/env ruby
+APP_PATH = File.expand_path("../config/application", __dir__)
+require_relative "../config/boot"
+
+# Coverage must start before any application code loads (including rake task
+# files loaded during boot), or those files are invisible to Ruby's Coverage
+# library. Configuration lives in .simplecov.
+if ENV["COVERAGE"] && ENV["RAILS_ENV"] == "test"
+  require "simplecov"
+  SimpleCov.start "rails"
+end
+
+require "rails/commands"

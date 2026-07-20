@@ -1,0 +1,28 @@
+{
+  "[ruby]": {
+    "editor.defaultFormatter": "Shopify.ruby-lsp"
+  },
+  "rubyLsp.formatter": "standard",
+  "rubyLsp.linters": ["standard"],
+  // "editor.defaultFormatter": "oxc.oxc-vscode",
+  "[typescript]": { "editor.defaultFormatter": "oxc.oxc-vscode" },
+  "[vue]": { "editor.defaultFormatter": "oxc.oxc-vscode" },
+  "[css]": { "editor.defaultFormatter": "oxc.oxc-vscode" },
+  "[tailwindcss]": { "editor.defaultFormatter": "oxc.oxc-vscode" },
+  "oxc.fmt.configPath": "./oxfmt.config.ts",
+  "editor.formatOnSave": true,
+  "editor.formatOnSaveMode": "file",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.oxc": "explicit"
+  },
+  "npm.scriptRunner": "vp",
+  "search.exclude": {
+    "**/*.rbi": true
+  },
+  "i18n-ally.localesPaths": ["app/javascript/locales"],
+  "i18n-ally.displayLanguage": "en",
+  "i18n-ally.sourceLanguage": "en",
+  "i18n-ally.keystyle": "nested",
+  "i18n-ally.enabledFrameworks": ["vue", "i18next"],
+  "i18n-ally.annotations": false // this turns off the in-code annotations which are buggy and distracting
+}

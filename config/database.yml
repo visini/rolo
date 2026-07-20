@@ -1,0 +1,38 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("DB_POOL") { ENV.fetch("RAILS_MAX_THREADS") { 5 } } %>
+  timeout: 5000
+  url: "postgres://postgres:password@localhost:5432"
+
+development:
+  primary:
+    <<: *default
+    database: development_rolo
+  cache:
+    <<: *default
+    database: development_rolo_cache
+    migrations_paths: db/cache_migrate
+
+test:
+  <<: *default
+  database: test_rolo
+
+production:
+  primary: &default_production
+    <<: *default
+    # Important: Omit /database suffix in the DATABASE_URL environment variable
+    url: <%= ENV.fetch("DATABASE_URL") { "no_database_url_specified" } %>
+    database: <%= ENV.fetch("KAMAL_DESTINATION") { "production" } %>_rolo
+  cache:
+    <<: *default_production
+    database: <%= ENV.fetch("KAMAL_DESTINATION") { "production" } %>_rolo_cache
+    migrations_paths: db/cache_migrate
+  queue:
+    <<: *default_production
+    database: <%= ENV.fetch("KAMAL_DESTINATION") { "production" } %>_rolo_queue
+    migrations_paths: db/queue_migrate
+  cable:
+    <<: *default_production
+    database: <%= ENV.fetch("KAMAL_DESTINATION") { "production" } %>_rolo_cable
+    migrations_paths: db/cable_migrate

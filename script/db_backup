@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+set -euo pipefail
+cd "$(dirname "$0")/.."
+
+RAILS_ENV="development"
+
+DB_NAME="$(bin/rails runner -e "$RAILS_ENV" 'print ActiveRecord::Base.connection_db_config.database')"
+STAMP="$(date +%Y%m%d_%H%M%S)"
+FILENAME="${RAILS_ENV}_${DB_NAME}_${STAMP}.dump"
+FILE="backups/${FILENAME}"
+
+mkdir -p backups
+pg_dump --format=custom --file="$FILE" "$DB_NAME"
+
+# Verify the archive is readable
+pg_restore --list "$FILE" >/dev/null
+
+echo "Created backup: $FILE"
+
+# Mirror it outside the repo in case something happens to the repo on disk
+MIRROR_DIR="$HOME/Temporary/backup/rolo"
+mkdir -p "$MIRROR_DIR"
+cp "$FILE" "$MIRROR_DIR/$FILENAME"
+echo "Copied backup to $MIRROR_DIR/$FILENAME"

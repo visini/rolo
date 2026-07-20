@@ -1,0 +1,55 @@
+{
+  "type": "module",
+  "scripts": {
+    "lint": "vp check",
+    "typecheck": "vue-tsc -p tsconfig.app.json && tsc -p tsconfig.node.json",
+    "check": "npm run lint && npm run typecheck",
+    "vitest": "vp test watch",
+    "test": "npm run check && vp test run --coverage",
+    "prepare": "vp config"
+  },
+  "dependencies": {
+    "@inertiajs/vite": "^3.6.1",
+    "@inertiajs/vue3": "^3.6.1",
+    "@lucide/vue": "^1.25.0",
+    "@tailwindcss/vite": "^4.3.3",
+    "@vitejs/plugin-vue": "^6.0.8",
+    "@vueuse/core": "^14.3.0",
+    "i18next": "^26.3.6",
+    "i18next-vue": "^5.4.0",
+    "tailwind-merge": "^3.6.0",
+    "tailwindcss": "^4.3.3",
+    "vite-plugin-ruby": "^5.2.2",
+    "vue": "^3.5.40"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/vue": "^8.1.0",
+    "@types/node": "^26.1.1",
+    "@vitest/coverage-v8": "^4.1.10",
+    "@vue/test-utils": "^2.4.11",
+    "fishery": "^2.4.0",
+    "happy-dom": "^20.10.6",
+    "jsdom": "^29.1.1",
+    "playwright": "^1.61.1",
+    "typescript": "^6.0.3",
+    "vite": "npm:@voidzero-dev/vite-plus-core@0.2.5",
+    "vite-plugin-vue-devtools": "^8.1.5",
+    "vite-plus": "^0.2.5",
+    "vitest": "^4.1.10",
+    "vue-tsc": "^3.3.7"
+  },
+  "overrides": {
+    "vite": "npm:@voidzero-dev/vite-plus-core@0.2.5"
+  },
+  "devEngines": {
+    "packageManager": {
+      "name": "npm",
+      "version": "12.0.1"
+    }
+  },
+  "allowScripts": {
+    "vue-demi@0.14.10": true,
+    "fsevents": true
+  }
+}
