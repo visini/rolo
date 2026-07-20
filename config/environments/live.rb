@@ -40,6 +40,9 @@ Rails.application.configure do
   # Set localhost to be used by links generated in mailer templates.
   config.action_mailer.default_url_options = {host: "localhost", port: 3000}
 
+  # Log to STDOUT so `just live` shows requests directly in the terminal.
+  config.logger = ActiveSupport::TaggedLogging.logger($stdout)
+
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 
