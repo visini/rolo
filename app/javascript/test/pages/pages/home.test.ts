@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/vue"
 import I18NextVue from "i18next-vue"
 import i18n from "@/i18n"
-import usersFixture from "@/test/fixtures/users"
+import userFixtures from "@/test/fixtures/users"
 
 import PagesHomePage from "@/pages/pages/home.vue"
 import type { PagesHome } from "@/types"
@@ -14,7 +14,7 @@ const global = {
 describe("pages/home", () => {
   test("renders current user props", () => {
     const props = {
-      currentUser: usersFixture.camillo,
+      currentUser: userFixtures.camillo,
       upcomingBirthdays: [],
     } satisfies PagesHome
 
