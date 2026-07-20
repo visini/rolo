@@ -7,6 +7,6 @@ class FrontendFixturesExporterTest < ActiveSupport::TestCase
   test "models returns the ApplicationRecord classes with a seed file" do
     models = FrontendFixtures::Exporter.new.send(:models)
 
-    assert_equal [User], models.sort_by(&:name)
+    assert_equal [Person, User], models.sort_by(&:name)
   end
 end

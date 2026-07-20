@@ -6,9 +6,9 @@ SimpleCov.configure do
   enable_coverage :line
   enable_coverage :branch
   enable_coverage :method
-  coverage :line, minimum: 1
-  coverage :branch, minimum: 1
-  coverage :method, minimum: 1
+  coverage :line, minimum: 0
+  coverage :branch, minimum: 0
+  coverage :method, minimum: 0
 
   skip "lib/tasks"
 

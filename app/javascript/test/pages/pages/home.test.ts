@@ -15,6 +15,7 @@ describe("pages/home", () => {
   test("renders current user props", () => {
     const props = {
       currentUser: usersFixture.camillo,
+      upcomingBirthdays: [],
     } satisfies PagesHome
 
     render(PagesHomePage, { props, global })

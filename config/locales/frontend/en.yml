@@ -1,6 +1,15 @@
 ---
 en:
   common:
-    hello: Hello
+    "no": "No"
+    none: None
+    "yes": "Yes"
   navigation:
     home: Home
+    people: People
+  pages:
+    home:
+      upcoming_birthdays: Upcoming birthdays
+  people:
+    index:
+      title: People

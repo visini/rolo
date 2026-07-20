@@ -1,2 +1,7 @@
 ---
-en: {}
+en:
+  activerecord:
+    attributes:
+      person:
+        age: Age
+        favorite: Favorite

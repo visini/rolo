@@ -24,4 +24,6 @@ Rails.application.routes.draw do
   controller :pages do
     get "/", as: :home, action: :home
   end
+
+  resources :people, only: [:index, :show]
 end
