@@ -22,6 +22,9 @@
   "people": {
     "index": {
       "title": "People"
+    },
+    "show": {
+      "notes": "Notes"
     }
   },
   "activerecord": {

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useTranslation } from "i18next-vue"
 import type { PeopleShow } from "@/types/serializers"
-import { formatDate } from "@/lib/dates"
+import { formatDate, formatDateTime } from "@/lib/dates"
 
 defineProps<PeopleShow>()
 const { t } = useTranslation()
@@ -12,22 +12,38 @@ const { t } = useTranslation()
     <h1>{{ person.name }}</h1>
 
     <dl class="grid grid-cols-[max-content_1fr] gap-x-8 gap-y-2 text-sm">
-      <dt class="text-muted-foreground">
+      <dt class="text-gray-500">
         {{ t("activerecord.attributes.person.favorite") }}
       </dt>
       <dd>{{ person.favorite ? t("common.yes") : t("common.no") }}</dd>
 
       <template v-if="person.age != null">
-        <dt class="text-muted-foreground">
+        <dt class="text-gray-500">
           {{ t("activerecord.attributes.person.age") }}
         </dt>
         <dd>
           {{ person.age }}
-          <template v-if="person.birthday"
-            >({{ formatDate(person.birthday) }})</template
-          >
+          <span v-if="person.birthday" class="text-gray-500">
+            ({{ formatDate(person.birthday) }})
+          </span>
         </dd>
       </template>
     </dl>
+
+    <div class="space-y-2">
+      <h2>{{ t("people.show.notes") }}</h2>
+
+      <ul class="space-y-1">
+        <li v-for="note in notes" :key="note.id">
+          <div class="flex items-center gap-4">
+            <div class="font-bold">{{ note.title }}</div>
+            <div class="text-gray-500">
+              {{ formatDateTime(note.createdAt) }}
+            </div>
+          </div>
+          <p class="whitespace-pre">{{ note.body }}</p>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>

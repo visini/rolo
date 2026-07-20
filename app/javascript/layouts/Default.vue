@@ -14,19 +14,19 @@ const current = (name: string) => page.component === name
       <div class="flex gap-6">
         <Link
           :href="home().url"
-          class="font-semibold hover:underline"
+          class="font-bold hover:underline"
           :class="{ underline: current('pages/home') }"
           >{{ t("navigation.home") }}</Link
         >
         <Link
           :href="people.index().url"
-          class="font-semibold hover:underline"
+          class="font-bold hover:underline"
           :class="{ underline: current('people/index') }"
           >{{ t("navigation.people") }}</Link
         >
         <Link
           :href="groups.index().url"
-          class="font-semibold hover:underline"
+          class="font-bold hover:underline"
           :class="{ underline: current('groups/index') }"
           >{{ t("navigation.groups") }}</Link
         >

@@ -7,5 +7,6 @@ class PeopleController < InertiaController
 
   def show
     @person = Person.find(params[:id])
+    @notes = @person.notes.ordered
   end
 end

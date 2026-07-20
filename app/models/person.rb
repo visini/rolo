@@ -1,6 +1,7 @@
 class Person < ApplicationRecord
   has_many :group_memberships, dependent: :restrict_with_exception
   has_many :groups, through: :group_memberships
+  has_many :notes, dependent: :restrict_with_exception
 
   scope :ordered, -> { order(:first_name, :last_name) }
   scope :favorites, -> { where(favorite: true) }
