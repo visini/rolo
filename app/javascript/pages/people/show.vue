@@ -4,9 +4,13 @@ import { useTranslation } from "i18next-vue"
 import type { PeopleShow } from "@/types/serializers"
 import { formatDate, formatDateTime } from "@/lib/dates"
 import peopleRoutes from "@/routes/PeopleController"
+import NoteForm from "@/components/NoteForm.vue"
+import { notes as notesRoutes } from "@/routes"
 
 const props = defineProps<PeopleShow>()
 const { t } = useTranslation()
+
+const createNoteRoute = notesRoutes.create(props.person.id)
 </script>
 
 <template>
@@ -54,10 +58,21 @@ const { t } = useTranslation()
             <div class="text-gray-500">
               {{ formatDateTime(note.createdAt) }}
             </div>
+            <Link
+              class="link"
+              :href="notesRoutes.edit({ personId: person.id, id: note.id }).url"
+              >{{ t("common.actions.edit") }}</Link
+            >
           </div>
           <p class="whitespace-pre">{{ note.body }}</p>
         </li>
       </ul>
+
+      <NoteForm
+        :key="notes.length"
+        :action="createNoteRoute.url"
+        :method="createNoteRoute.method"
+      />
     </div>
   </div>
 </template>

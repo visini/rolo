@@ -2,6 +2,11 @@
 en:
   activerecord:
     attributes:
+      group:
+        name: Name
+      note:
+        body: Body
+        title: Title
       person:
         age: Age
         birthday: Birthday

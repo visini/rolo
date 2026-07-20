@@ -25,7 +25,9 @@ Rails.application.routes.draw do
     get "/", as: :home, action: :home
   end
 
-  resources :people, only: [:index, :show, :new, :create, :edit, :update]
+  resources :people, only: [:index, :show, :new, :create, :edit, :update] do
+    resources :notes, only: [:create, :edit, :update]
+  end
 
   resources :groups, only: [:index, :show, :new, :create, :edit, :update] do
     resources :group_memberships, only: [:create, :destroy]

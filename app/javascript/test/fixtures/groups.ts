@@ -6,18 +6,21 @@ import { groupFactory } from "../factories"
 const liceo = {
   id: 1,
   name: "Liceo",
-  people: [
+  groupMemberships: [
     {
       id: 1,
-      firstName: "Camillo",
-      lastName: "Visini",
-      favorite: false,
-      birthdayDay: 17,
-      birthdayMonth: 8,
-      birthdayYear: 1994,
-      name: "Camillo Visini",
-      age: 31,
-      birthday: "1994-08-17",
+      person: {
+        id: 1,
+        firstName: "Camillo",
+        lastName: "Visini",
+        favorite: false,
+        birthdayDay: 17,
+        birthdayMonth: 8,
+        birthdayYear: 1994,
+        name: "Camillo Visini",
+        age: 31,
+        birthday: "1994-08-17",
+      },
     },
   ],
 } satisfies Group

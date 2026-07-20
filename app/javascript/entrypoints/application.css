@@ -63,8 +63,14 @@
     @apply block text-sm font-bold mb-1;
   }
 
-  input:not([type="checkbox"]) {
+  input:not([type="checkbox"]),
+  textarea,
+  select {
     @apply block w-full rounded border border-border px-2 py-1;
+  }
+
+  textarea {
+    @apply min-h-24;
   }
 
   button[type="submit"] {

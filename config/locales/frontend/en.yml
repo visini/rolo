@@ -3,17 +3,28 @@ en:
   common:
     actions:
       cancel: Cancel
+      edit: Edit
       save: Save
     'no': 'No'
     none: None
     'yes': 'Yes'
   groups:
+    actions:
+      edit: Edit group
+      new: New group
     index:
       title: Groups
+    show:
+      add_member: Add
+      members: Members
+      remove_member: Remove
   navigation:
     groups: Groups
     home: Home
     people: People
+  notes:
+    actions:
+      edit: Edit note
   pages:
     home:
       upcoming_birthdays: Upcoming birthdays
