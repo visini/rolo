@@ -9,6 +9,10 @@ development:
   database: cache
   <<: *default
 
+live:
+  database: cache
+  <<: *default
+
 test:
   <<: *default
 
