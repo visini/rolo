@@ -7,7 +7,7 @@ module FrontendFixtures
   class Exporter
     # Seeded ApplicationRecord classes to skip when exporting frontend fixtures,
     # e.g. because there's no corresponding frontend resource/type for them.
-    SKIPPED_MODELS = [].freeze
+    SKIPPED_MODELS = ["GroupMembership"].freeze
 
     def run
       ActiveRecord::Tasks::DatabaseTasks.truncate_all

@@ -4,7 +4,13 @@
     "none": "None",
     "yes": "Yes"
   },
+  "groups": {
+    "index": {
+      "title": "Groups"
+    }
+  },
   "navigation": {
+    "groups": "Groups",
     "home": "Home",
     "people": "People"
   },

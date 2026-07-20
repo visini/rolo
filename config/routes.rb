@@ -26,4 +26,5 @@ Rails.application.routes.draw do
   end
 
   resources :people, only: [:index, :show]
+  resources :groups, only: [:index]
 end

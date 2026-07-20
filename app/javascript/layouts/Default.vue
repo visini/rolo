@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Link, usePage } from "@inertiajs/vue3"
 import { useTranslation } from "i18next-vue"
-import { home, people } from "@/routes"
+import { groups, home, people } from "@/routes"
 
 const { t } = useTranslation()
 const page = usePage()
@@ -23,6 +23,12 @@ const current = (name: string) => page.component === name
           class="font-semibold hover:underline"
           :class="{ underline: current('people/index') }"
           >{{ t("navigation.people") }}</Link
+        >
+        <Link
+          :href="groups.index().url"
+          class="font-semibold hover:underline"
+          :class="{ underline: current('groups/index') }"
+          >{{ t("navigation.groups") }}</Link
         >
       </div>
     </nav>

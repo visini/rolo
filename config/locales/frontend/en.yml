@@ -1,10 +1,14 @@
 ---
 en:
   common:
-    "no": "No"
+    'no': 'No'
     none: None
-    "yes": "Yes"
+    'yes': 'Yes'
+  groups:
+    index:
+      title: Groups
   navigation:
+    groups: Groups
     home: Home
     people: People
   pages:
